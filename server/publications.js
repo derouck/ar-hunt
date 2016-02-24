@@ -11,5 +11,5 @@ Meteor.publish('games', function() {
 });
 
 Meteor.publish('currentGame', function() {
-  return Games.find({status:"active",players:{$in:[this.userId]}});
+  return Games.find({status:"inProgress",players:{$in:[this.userId]}});
 });
