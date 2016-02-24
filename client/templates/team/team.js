@@ -16,9 +16,12 @@ Template.team.helpers({
 		if(users.length === 4) {
 			$('#start-game').prop("disabled",false);
 		} else {
-			$('#start-game').prop("disabled",true);
+			$('#start-game').prop("disabled", true);
 		}
 
 		return users;
+	},
+	getGame: function(){
+		console.log(Session.get('game'));
 	}
 });

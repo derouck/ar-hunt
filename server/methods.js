@@ -1,5 +1,5 @@
 Meteor.methods({
-    clickWire(wireId) {
-        // do some wire clicking
-    }
+	joinGame: function(id) {
+		return Games.update(id, {$push: {players: this.userId}});
+	}
 });
