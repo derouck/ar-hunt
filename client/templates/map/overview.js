@@ -1,4 +1,4 @@
 Template.overview.onCreated(function () {
 
-  this.subscribe('beacons');
+  this.subscribe('currentGame');
 });
