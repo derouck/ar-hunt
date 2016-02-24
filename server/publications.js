@@ -1,5 +1,5 @@
-Meteor.publish("onlineUsers", function() {
-	return Meteor.users.find({"status.online": true});
+Meteor.publish("users", function() {
+	return Meteor.users.find({});
 });
 
 Meteor.publish('beacons', function() {
@@ -11,5 +11,9 @@ Meteor.publish('games', function() {
 });
 
 Meteor.publish('currentGame', function() {
-  return Games.find({status:"inProgress",players:{$in:[this.userId]}});
+  return Games.find({status: "inProgress", players: {$in: [this.userId]}});
+});
+
+Meteor.publish('readyGames', function(){
+	return Games.find({status: "ready"});
 });

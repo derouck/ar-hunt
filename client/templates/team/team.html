@@ -7,15 +7,14 @@
   {{#ionView}}
     {{#ionContent}}
         <section id="users">
-            <h1>Joined Users</h1>
-            {{#each users}}
-                <div class="user">
-                    <img src="http://api.adorable.io/avatars/50/{{_id}}" class="user-image"/>
-                    <p>{{emails.[0].address}}</p>
-                </div>
-            {{/each}}
-
-            <button type="button" id="start-game" class="button button-positive" disabled>Start the Game</button>
+            {{#ionList}}
+                {{#each inGameUsers}}
+                    {{#ionItem avatar=true}}
+                        <img src="http://api.adorable.io/avatars/50/{{_id}}" class="user-image"/>
+                        <p>{{emails.[0].address}}</p>
+                    {{/ionItem}}
+                {{/each}}
+            {{/ionList}}
         </section>
     {{/ionContent}}
   {{/ionView}}

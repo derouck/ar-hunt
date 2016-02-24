@@ -1,27 +1,26 @@
 Template.team.onCreated(function(){
-	// 1. Initialization
 	var instance = this;
 
-	// 2. Autorun
-	// will re-run when the "limit" reactive variables changes
 	instance.autorun(function () {
-		// subscribe to the posts publication
-		instance.subscribe('onlineUsers');
+		instance.subscribe('users');
 	});
 });
 
 Template.team.helpers({
-	users: function(){
-		var users = Meteor.users.find().fetch();
-		if(users.length === 4) {
-			$('#start-game').prop("disabled",false);
-		} else {
-			$('#start-game').prop("disabled", true);
-		}
+	inGameUsers: function(){
+		var gameId = Session.get('currentGameId');
+		var game = Games.findOne({'_id': gameId});
+		var users = Meteor.users.find();
+		var inGameUsers = [];
 
-		return users;
-	},
-	getGame: function(){
-		console.log(Session.get('game'));
+		users.forEach((user) => {
+			game.players.forEach((gameUser) => {
+				if(user._id === gameUser) {
+					inGameUsers.push(user);
+				}
+			});
+		});
+
+		return inGameUsers;
 	}
 });

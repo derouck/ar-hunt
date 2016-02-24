@@ -20,13 +20,12 @@ Template.login.events({
 		})
 	},
 	'click .join-game': function (event) {
+		Session.setPersistent('currentGameId', this._id);
 		Meteor.call('joinGame', this._id, function(error, response) {
 			if(error) {
 				console.log(error.message);
 			} else if(response === 1) {
-				Session.set('game', this);
-				console.log('You have joined the game');
-				Router.go('/team');
+				console.log('You have joined the game!');
 			}
 		});
 	}
