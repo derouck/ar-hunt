@@ -1,0 +1,20 @@
+<template name="login">
+
+    {{#ionView}}
+    {{#ionContent}}
+
+      <div class="login">
+
+      {{#if currentUser}}
+        {{currentUser._id}}
+        <button id="logout">Logout</button>
+        <button id="checkBeacons">Check Beacons</button>
+	    {{else}}
+
+	  		{{> atForm}}
+	    {{/if}}
+
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>
