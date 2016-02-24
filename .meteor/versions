@@ -1,5 +1,7 @@
 accounts-base@1.2.2
 accounts-password@1.1.4
+amplify@1.0.0
+ando:persistent-session@0.2.1
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4

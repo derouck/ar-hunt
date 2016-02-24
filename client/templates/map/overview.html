@@ -6,8 +6,12 @@
 
   {{#ionView}}
     {{#ionContent}}
+      {{#ionList}}
+        {{#each beacons}}
+          {{> beacon}}
+        {{/each}}
+      {{/ionList}}
 
-    MAP
 
     {{/ionContent}}
   {{/ionView}}

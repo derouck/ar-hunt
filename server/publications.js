@@ -1,7 +1,7 @@
 // Share all usernames
-// Meteor.publish(null, function() {
-//    return Meteor.users.find({}, {"fields": { "username": 1}});
-// });
+Meteor.publish('users', function() {
+   return Meteor.users.find({}, {"fields": { "emails.[0].address": 1}});
+});
 Meteor.publish('beacons', function() {
    return Beacons.find();
 });
