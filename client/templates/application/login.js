@@ -8,3 +8,6 @@ Template.login.events({
         })
     }
 });
+Template.login.onCreated(function () {
+  this.subscribe('games');
+});
