@@ -1,0 +1,19 @@
+<template name="team">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">TEAM</h1>
+  {{/contentFor}}
+
+
+  {{#ionView}}
+    {{#ionContent}}
+        <section id="users">
+            <h1>JOINED USERS</h1>
+            {{#each users}}
+                <p>{{emails.[0].address}}</p>
+            {{/each}}
+
+            <button type="button" id="start-game" class="button button-positive" disabled>Start the Game</button>
+        </section>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

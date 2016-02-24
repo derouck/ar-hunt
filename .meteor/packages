@@ -24,3 +24,4 @@ useraccounts:core
 useraccounts:ionic
 accounts-password
 #useraccounts:iron-routing
+mizzao:user-status
