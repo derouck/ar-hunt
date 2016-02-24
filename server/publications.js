@@ -9,3 +9,7 @@ Meteor.publish('beacons', function() {
 Meteor.publish('games', function() {
    return Games.find();
 });
+
+Meteor.publish('currentGame', function() {
+  return Games.find({status:"active",players:{$in:[this.userId]}});
+});
