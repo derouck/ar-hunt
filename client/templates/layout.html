@@ -1,18 +1,24 @@
 <template name="layout">
 
-  {{#ionBody}}
-    {{> ionNavBar class="bar-balanced"}}
-    {{#ionNavView}}
-      {{> yield}}
-    {{/ionNavView}}
+    {{#ionBody}}
+        {{> ionNavBar class="bar-balanced"}}
+        {{#ionNavView}}
+            {{> yield}}
+        {{/ionNavView}}
 
-    {{#ionTabs class="tabs-balanced tabs-icon-top"}}
-		  {{> ionTab title="RULES" path="rules" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
-		  {{> ionTab title="TEAM" path="team" iconOff="ios-people-outline" iconOn="ios-people"}}
-		  {{> ionTab title="OVERVIEW" path="overview" iconOff="ios-list-outline" iconOn="ios-list"}}
-		  {{> ionTab title="RADAR" path="radar" iconOff="ios-navigate-outline" iconOn="ios-navigate"}}
-  	{{/ionTabs}}
+        {{#ionTabs class="tabs-balanced tabs-icon-top"}}
+            {{#if isActiveRoute regex='login|rulesInAdvance'}}
+                {{>ionTab title="RULES" path="rulesInAdvance" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
+                {{>ionTab title="LOGIN" path="login" iconOff="ios-checkmark-outline" iconOn="ios-checkmark"}}
+            {{/if}}
 
-  {{/ionBody}}
+            {{#if isNotActiveRoute regex='login|rulesInAdvance'}}
+                {{> ionTab title="RULES" path="rules" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
+                {{> ionTab title="TEAM" path="team" iconOff="ios-people-outline" iconOn="ios-people"}}
+                {{> ionTab title="OVERVIEW" path="overview" iconOff="ios-list-outline" iconOn="ios-list"}}
+                {{> ionTab title="RADAR" path="radar" iconOff="ios-navigate-outline" iconOn="ios-navigate"}}
+            {{/if}}
+        {{/ionTabs}}
+    {{/ionBody}}
 
 </template>
