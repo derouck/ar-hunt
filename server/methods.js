@@ -46,7 +46,11 @@ Meteor.methods({
 					if(amountOfBombs == game.wiresCut + 1){
 						// all the bombs are cut, hurray!
 						Games.update(game._id, {$set: {status: 'Finished', dateEnd: new Date()}});
+
+						return 200;
 					}
+
+					return 250;
 					// Allright you've cut the wire
 				}else{
 					Games.update(game._id, {$set: {status: 'Exploded', dateEnd: new Date()}});
@@ -60,6 +64,8 @@ Meteor.methods({
 							createdAt: new Date()
 						}
 					);
+
+					return 500;
 				}
 			}
 		});
