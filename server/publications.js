@@ -4,7 +4,7 @@ Meteor.publish('usersForTeam', function() {
 
 // Share all usernames
 Meteor.publish('users', function() {
-   return Meteor.users.find({}, {"fields": { "username": 1}});
+   return Meteor.users.find({}, {"fields": { "username": 1,"nearestBeacon":1}});
 });
 
 Meteor.publish('beacons', function() {

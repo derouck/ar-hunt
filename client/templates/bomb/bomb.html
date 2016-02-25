@@ -18,9 +18,15 @@
               <h2>{{name}}</h2>
             </div>
 
+
+
             <div class="item">
               <center>
-              <i class="fa fa-certificate fa-5x fa-spin"></i>
+              {{#if proximity3}}
+                <i class="fa fa-bomb fa-5x red"></i>
+              {{else}}
+                <i class="fa fa-certificate fa-5x fa-spin"></i>
+              {{/if}}
               <div style="margin-top:20px;">
 
                 {{#if proximity0}}<i class="fa fa-3x fa-circle-o"></i><i class="fa fa-3x fa-circle-o"></i><i class="fa fa-3x fa-circle-o"></i>{{/if}}
@@ -29,12 +35,27 @@
                 {{#if proximity3}}<i class="fa fa-3x fa-circle"></i><i class="fa fa-3x fa-circle"></i><i class="fa fa-3x fa-circle"></i>{{/if}}
 
               </div>
+
+              {{#if canCut}}
+                <a href="#" id="cutWire" class="button button-balanced button-block">CUT THE WIRE</a>
+              {{/if}}
             </center>
             </div>
 
+
+            {{#if nearByUsers}}
+            <div class="item">
+              {{#each nearByUsers}}
+                <img class="avatar" src="http://api.adorable.io/avatars/60/{{_id}}.png">
+
+              {{/each}}
+            </div>
+            {{/if}}
+
+
             <div class="item item-body">
                 <p>{{description}}</p>
-                <a href="#" id="cutWire" class="button button-balanced button-block">CUT THE WIRE</a>
+
             </div>
 
           </div>

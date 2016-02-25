@@ -9,6 +9,9 @@ var teamNames = [
 ];
 
 Meteor.methods({
+	updateNearestBeacon: function(id) {
+		return Meteor.users.update({_id:this.userId},{$set:{nearestBeacon:id}});
+	},
 	joinGame: function(id) {
 		return Games.update(id, {$push: {players: this.userId}});
 	},
@@ -52,8 +55,9 @@ Meteor.methods({
 		return Games.update(id, {$set: {status: 'inProgress', ordering: beacon_ordering, wiresCut: 0, dateStarted: new Date()}});
 	},
 	cutWire: function(currentBeaconId) {
-		console.log(currentBeaconId);
-		let game = Games.find({status: "inProgress", players: this.userId});
+
+		let game = Games.findOne({status: "inProgress", players: {$in:[this.userId]}});
+
 		console.log(game);
 
 		if(! game){
