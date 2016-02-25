@@ -1,0 +1,28 @@
+<template name="radar">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">RADAR</h1>
+  {{/contentFor}}
+
+
+  {{#ionView}}
+    {{#ionContent}}
+
+    RADAR
+    <hr>
+    {{#if beacon}}
+      {{beacon}}
+      {{beaconCount}}
+    {{else}}
+      No beacon detected
+    {{/if}}
+    <hr>
+    {{#if beacon2}}
+      {{beacon2}}
+      {{beaconCount2}}
+    {{else}}
+      No beacon2 detected
+    {{/if}}
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>

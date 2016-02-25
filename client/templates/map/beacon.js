@@ -1,15 +1,11 @@
 Template.beacon.onCreated(function () {
-
     const instance = Template.instance();
 
     this.subscribe('currentGame');
-    this.subscribe('beacons');
     this.subscribe('users');
-
 });
 
 Template.beacon.helpers({
-
   users(){
 
     const instance = Template.instance();
