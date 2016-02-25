@@ -1,8 +1,11 @@
 <template name="waitingForUsers">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">WAITING QUEUE</h1>
+    {{/contentFor}}
+
     {{#ionView}}
         {{#ionContent}}
             <section id="users">
-                <h1>Joined Users</h1>
                 {{#ionList}}
                     {{#each inGameUsers}}
                         {{#ionItem avatar=true}}

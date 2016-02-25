@@ -5,44 +5,32 @@ Meteor.startup(function () {
             'name': "blue",
             'minor': 59685,
             'major': 38452,
-            'description': "xxx",
-            name: "Bomb 1",
-            image: "bomb1.jpg",
-            description: "Boooommmm!"
-
+            'description': "I’m sitting quite comfortable over here. When I look to the right, I can see the beach and the ocean.",
+            'image': "bomb1.jpg"
         });
         Beacons.insert({
             'uuid': "d0d3fa86-ca76-45ec-9bd9-6af490c204d4",
             'name': "shoe",
             'minor': 24729,
             'major': 8745,
-            'description': "xxx",
-            name: "Bomb 2",
-            image: "bomb2.jpg",
-            description: "Try to find me"
-
+            'description': "Don’t look for me inside the hostel, go outside, don’t look too far, then you will find me!",
+            'image': "bomb2.jpg"
         });
         Beacons.insert({
             'uuid': "d0d3fa86-ca76-45ec-9bd9-6af4bbe4d46d",
             'name': "car",
             'minor': 59907,
             'major': 1155,
-            'description': "xxx",
-            name: "Bomb 3",
-            image: "bomb3.jpg",
-            description: "What's your last wish?"
-
+            'description': "Damn, it smells good in here! They even have a stash of beer in this area.",
+            'image': "bomb3.jpg"
         });
         Beacons.insert({
             'uuid': "d0d3fa86-ca76-45ec-9bd9-6af482ad00bd",
             'name': "bicycle",
             'minor': 55579,
             'major': 8158,
-            'description': "xxx",
-            name: "Bomb 4",
-            image: "bomb4.jpg",
-            description: "I can be activated remotely"
-
+            'description': "Don’t look for me inside the hostel, go outside, take a seat, enjoy the view, take a deep breath, but especially, don’t forget me...",
+            'image': "bomb4.jpg"
         });
     }
 
@@ -70,12 +58,12 @@ Meteor.startup(function () {
     );
   }
 
+
     const users = [
         "chris@ff.com",
         "alexis@ff.com",
         "jesper@ff.com"
     ];
-
 
     if(Meteor.users.find().count() == 0){
         users.forEach(function(user){
