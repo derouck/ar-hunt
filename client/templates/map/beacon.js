@@ -17,7 +17,7 @@ Template.beacon.helpers({
       if(currentGame){
 
         let users = Meteor.users.find({nearestBeacon:this._id}).fetch();
-        console.log(users);
+        //console.log(users);
         return users;
       }
 

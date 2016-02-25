@@ -28,6 +28,7 @@ Meteor.methods({
 		return Games.update(id, {$set: {status: 'inProgress', ordering: beacon_ordering, wiresCut: 0, dateStarted: new Date()}});
 	},
 	cutWire: function(currentBeaconId) {
+		console.log(currentBeaconId);
 		let game = Games.find({status: "inProgress", players: this.userId});
 		console.log(game);
 
@@ -46,7 +47,11 @@ Meteor.methods({
 					if(amountOfBombs == game.wiresCut + 1){
 						// all the bombs are cut, hurray!
 						Games.update(game._id, {$set: {status: 'Finished', dateEnd: new Date()}});
+
+						return BOMB_DEFUSED;
 					}
+
+					return BOMB_PARTIALLY_DEFUSED;
 					// Allright you've cut the wire
 				}else{
 					Games.update(game._id, {$set: {status: 'Exploded', dateEnd: new Date()}});
@@ -60,6 +65,8 @@ Meteor.methods({
 							createdAt: new Date()
 						}
 					);
+
+					return BOMB_EXPLODED;
 				}
 			}
 		});
