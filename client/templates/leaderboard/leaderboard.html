@@ -1,0 +1,24 @@
+<template name="leaderboard">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">LEADERBOARD</h1>
+        {{>logout}}
+    {{/contentFor}}
+
+
+    {{#ionView}}
+        {{#ionContent}}
+            <h1>Who's the king?</h1>
+            <section id="leaderboard">
+                {{#ionList}}
+                    {{#each teams}}
+                        {{#ionItem avatar=true}}
+                            <img src="http://api.adorable.io/avatars/50/{{teamName}}" class="user-image"/>
+                            <p>{{teamName}}</p>
+                        {{/ionItem}}
+                    {{/each}}
+                {{/ionList}}
+            </section>
+        {{/ionContent}}
+    {{/ionView}}
+
+</template>

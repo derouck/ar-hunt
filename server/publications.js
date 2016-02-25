@@ -26,3 +26,7 @@ Meteor.publish('currentGame', function() {
 Meteor.publish('readyGames', function(){
 	return Games.find({status: "ready"});
 });
+
+Meteor.publish('teamScores', function(){
+    return Games.find({status: "Finished"});
+});

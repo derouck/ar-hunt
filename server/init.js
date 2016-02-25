@@ -48,15 +48,24 @@ Meteor.startup(function () {
           beacon_ordering.push(beacon._id);
       });
 
-      Games.insert(
-        {
+      Games.insert({
           teamName:"React Lovers",
           status:"ready",
           players:[],
           ordering: beacon_ordering,
-          createdAt: new Date()
-        }
-    );
+          dateStarted: new Date()
+        });
+
+      Games.insert({
+          teamName:"Crazy Kangaroos",
+          status:"Finished",
+          players:[],
+          ordering: beacon_ordering,
+          dateStarted: new Date(),
+          dateEnd: new Date(),
+          mistakes: 1,
+          wiresCut: 4
+      });
   }
 
 
