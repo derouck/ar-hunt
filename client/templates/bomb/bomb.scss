@@ -1,6 +1,9 @@
 .item {
   i {
     margin:2px;
-    color:#28a54c;
+    color:silver;
+    &.red {
+      color:#28a54c
+    }
   }
 }
