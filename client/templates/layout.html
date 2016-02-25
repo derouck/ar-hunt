@@ -8,7 +8,9 @@
 
         {{#ionTabs class="tabs-balanced tabs-icon-top"}}
             {{#if isActiveRoute regex='login|rulesInAdvance'}}
-                {{>ionTab title="RULES" path="rulesInAdvance" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
+                {{#if currentUser}}
+                    {{>ionTab title="RULES" path="rulesInAdvance" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
+                {{/if}}
                 {{>ionTab title="LOGIN" path="login" iconOff="ios-checkmark-outline" iconOn="ios-checkmark"}}
             {{/if}}
 
@@ -16,7 +18,6 @@
                 {{> ionTab title="RULES" path="rules" iconOff="ios-bookmarks-outline" iconOn="ios-bookmarks"}}
                 {{> ionTab title="TEAM" path="team" iconOff="ios-people-outline" iconOn="ios-people"}}
                 {{> ionTab title="OVERVIEW" path="overview" iconOff="ios-list-outline" iconOn="ios-list"}}
-                {{> ionTab title="RADAR" path="radar" iconOff="ios-navigate-outline" iconOn="ios-navigate"}}
             {{/if}}
         {{/ionTabs}}
     {{/ionBody}}
