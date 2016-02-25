@@ -1,6 +1,9 @@
 <template name="waitingForUsers">
     {{#contentFor "headerTitle"}}
         <h1 class="title">WAITING QUEUE</h1>
+        {{#if currentUser}}
+            <button id="logout">Logout</button>
+        {{/if}}
     {{/contentFor}}
 
     {{#ionView}}

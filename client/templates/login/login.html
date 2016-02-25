@@ -9,17 +9,18 @@
             <div class="login">
 
                 {{#if currentUser}}
-                    {{currentUser._id}}
-                    <button id="logout">Logout</button>
-
                     <section id="games">
                         <h1>Available Games</h1>
-                        {{#each games}}
-                            <div class="game">
-                                {{teamName}}
-                                <button type="button" class="join-game">Join game</button>
-                            </div>
-                        {{/each}}
+                        {{#ionList}}
+                            {{#each games}}
+                                {{#ionItem}}
+                                    <div class="user game">
+                                        <p>{{teamName}}</p>
+                                        <button type="button" class="join-game button button-small button-balanced">Join game</button>
+                                    </div>
+                                {{/ionItem}}
+                            {{/each}}
+                        {{/ionList}}
                     </section>
                 {{else}}
                     {{> atForm}}
