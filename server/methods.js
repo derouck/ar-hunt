@@ -33,7 +33,7 @@ Meteor.methods({
 				teamName: teamName,
 				status: "ready",
 				players: [this.userId],
-				createdAt: new Date()
+				dateStarted: new Date()
 			}
 		);
 
@@ -74,25 +74,16 @@ Meteor.methods({
 
 					if(amountOfBombs == game.wiresCut + 1){
 						// all the bombs are cut, hurray!
-						Games.update(game._id, {$set: {status: 'Finished', dateEnd: new Date()}});
+
+						let endDate = new Date();
+						Games.update(game._id, {$set: {status: 'Finished', dateEnd: endDate}});
 
 						return BOMB_DEFUSED;
 					}
 
 					return BOMB_PARTIALLY_DEFUSED;
-					// Allright you've cut the wire
 				}else{
-					Games.update(game._id, {$set: {status: 'Exploded', dateEnd: new Date()}});
-
-					let shuffledTeamNames =_.shuffle(teamNames);
-					Games.insert(
-						{
-							teamName: shuffledTeamNames[0],
-							status: "ready",
-							players: game.players,
-							createdAt: new Date()
-						}
-					);
+					Games.update(game._id, {$inc: {mistakesMade: 1}});
 
 					return BOMB_EXPLODED;
 				}
