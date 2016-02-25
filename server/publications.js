@@ -11,6 +11,10 @@ Meteor.publish('beacons', function() {
    return Beacons.find();
 });
 
+Meteor.publish('currentBomb', function(id) {
+   return Beacons.find({_id: id});
+});
+
 Meteor.publish('games', function() {
    return Games.find();
 });
