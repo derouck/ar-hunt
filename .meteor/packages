@@ -27,3 +27,5 @@ accounts-password
 mizzao:user-status
 ando:persistent-session
 ejson
+mbanting:reactive-ibeacons
+underscore

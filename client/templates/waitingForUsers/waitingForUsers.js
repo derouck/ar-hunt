@@ -21,7 +21,7 @@ Template.waitingForUsers.helpers({
 			});
 		});
 
-		if(inGameUsers.length === 4) {
+		if(inGameUsers.length > 0) {
 			$('#start-game').prop("disabled", false);
 		} else {
 			$('#start-game').prop("disabled", true);
