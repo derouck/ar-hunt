@@ -12,13 +12,6 @@ Template.login.helpers({
 });
 
 Template.login.events({
-	'click #logout': function (event) {
-		Meteor.logout(function (err) {
-			if (err) {
-				throw new Meteor.Error("Logout failed");
-			}
-		})
-	},
 	'click .join-game': function (event) {
 		Session.setPersistent('currentGameId', this._id);
 		Meteor.call('joinGame', this._id, function(error, response) {
