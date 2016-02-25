@@ -24,5 +24,10 @@ useraccounts:core
 useraccounts:ionic
 accounts-password
 #useraccounts:iron-routing
+<<<<<<< HEAD
 mizzao:user-status
 u2622:persistent-session
+=======
+ando:persistent-session
+ejson
+>>>>>>> ff60c82ce0bc8287f3b7f30eeeb710048817320e

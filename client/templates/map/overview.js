@@ -1,4 +1,11 @@
 Template.overview.onCreated(function () {
+    this.subscribe('users');
+    this.subscribe('currentGame');
+    this.subscribe('beacons');
+});
 
-  this.subscribe('currentGame');
+Template.overview.helpers({
+  beacons: () => {
+    return Beacons.find();
+  }
 });

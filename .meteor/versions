@@ -1,6 +1,10 @@
 accounts-base@1.2.2
 accounts-password@1.1.4
 amplify@1.0.0
+<<<<<<< HEAD
+=======
+ando:persistent-session@0.2.1
+>>>>>>> ff60c82ce0bc8287f3b7f30eeeb710048817320e
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4

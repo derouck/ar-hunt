@@ -14,22 +14,30 @@ Meteor.startup(function () {
 
     Beacons.insert(
         {
-          name:"Beacon 1"
+          name:"Bomb 1",
+          image:"bomb1.jpg",
+          description:"Try to find me"
         }
     );
     Beacons.insert(
         {
-          name:"Beacon 2"
+          name:"Bomb 2",
+          image:"bomb2.jpg",
+          description:"Boooommmm!"
         }
     );
     Beacons.insert(
         {
-          name:"Beacon 3"
+          name:"Bomb 3",
+          image:"bomb3.jpg",
+          description:"What's your last wish?"
         }
     );
     Beacons.insert(
         {
-          name:"Beacon 4"
+          name:"Bomb 4",
+          image:"bomb4.jpg",
+          description:"I can be activated remotely"
         }
     );
   }

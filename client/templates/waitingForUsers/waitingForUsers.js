@@ -2,7 +2,7 @@ Template.waitingForUsers.onCreated(function(){
 	var self = this;
 	self.autorun(function(){
 		self.subscribe('games');
-		self.subscribe('users');
+		self.subscribe('usersForTeam');
 	});
 });
 

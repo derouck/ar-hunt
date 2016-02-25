@@ -2,7 +2,7 @@ Template.team.onCreated(function(){
 	var instance = this;
 
 	instance.autorun(function () {
-		instance.subscribe('users');
+		instance.subscribe('usersForTeam');
 	});
 });
 
