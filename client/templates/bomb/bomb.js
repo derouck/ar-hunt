@@ -42,7 +42,7 @@ Template.currentBomb.onCreated(function(){
                   //console.log("beacon in region "+bomb.minor+" "+bomb.major);
 
 
-                  if(element.proximity == 'ProximityImmediate' || element.proximity == 'ProximityNear'){
+                  if(element.proximity == 'ProximityUnknown' || element.proximity == 'ProximityFar' || element.proximity == 'ProximityImmediate' || element.proximity == 'ProximityNear'){
                     Meteor.call('updateNearestBeacon', bomb._id);
                   }
                   else {
@@ -99,7 +99,7 @@ Template.currentBomb.helpers({
    let currentUsersIds = _.map(currentUsers, function(value, key){ return value._id});
    let currentUsersOfGame = _.intersection(currentUsersIds, game.players)
 
-   return (currentUsersOfGame.length == game.players.length);
+   return (currentUsersOfGame.length >= 2);
  }
 });
 
