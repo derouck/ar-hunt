@@ -1,3 +1,14 @@
 <template name="currentBomb">
-    <h1>Bomb {{_id}} {{name}} {{uuid}}</h1>
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">TEAM</h1>
+    {{/contentFor}}
+
+
+    {{#ionView}}
+        {{#ionContent}}
+            {{#with currentBomb}}
+                <h1>Bomb {{_id}} {{name}} {{uuid}}</h1>
+            {{/with}}
+        {{/ionContent}}
+    {{/ionView}}
 </template>
