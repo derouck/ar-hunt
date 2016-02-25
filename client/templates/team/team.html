@@ -1,0 +1,21 @@
+<template name="team">
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">TEAM</h1>
+  {{/contentFor}}
+
+
+  {{#ionView}}
+    {{#ionContent}}
+        <section id="users">
+            {{#ionList}}
+                {{#each inGameUsers}}
+                    {{#ionItem avatar=true}}
+                        <img src="http://api.adorable.io/avatars/50/{{_id}}" class="user-image"/>
+                        <p>{{emails.[0].address}}</p>
+                    {{/ionItem}}
+                {{/each}}
+            {{/ionList}}
+        </section>
+    {{/ionContent}}
+  {{/ionView}}
+</template>
