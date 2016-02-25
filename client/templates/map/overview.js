@@ -6,6 +6,9 @@ Template.overview.onCreated(function () {
 
 Template.overview.helpers({
   beacons: () => {
-    return Beacons.find();
+    let game = Games.findOne();
+    console.log(game);
+    console.log(game.beacons());
+    return game.beacons();
   }
 });

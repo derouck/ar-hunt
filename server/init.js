@@ -42,4 +42,20 @@ Meteor.startup(function () {
     );
   }
 
+    const users = [
+        "chris@ff.com",
+        "alexis@ff.com",
+        "jesper@ff.com"
+    ];
+
+
+    if(Meteor.users.find().count() == 0){
+        users.forEach(function(user){
+            let details = {
+                email: user,
+                password: "meteorff"
+            };
+            Accounts.createUser(details);
+        });
+    }
 });
