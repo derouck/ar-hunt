@@ -70,7 +70,9 @@ Meteor.methods({
 
 					if(amountOfBombs == game.wiresCut + 1){
 						// all the bombs are cut, hurray!
-						Games.update(game._id, {$set: {status: 'Finished', dateEnd: new Date()}});
+
+						let endDate = new Date();
+						Games.update(game._id, {$set: {status: 'Finished', dateEnd: endDate}});
 
 						return BOMB_DEFUSED;
 					}

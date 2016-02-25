@@ -7,13 +7,12 @@
 
     {{#ionView}}
         {{#ionContent}}
-            <h1>Who's the king?</h1>
             <section id="leaderboard">
                 {{#ionList}}
                     {{#each teams}}
                         {{#ionItem avatar=true}}
                             <img src="http://api.adorable.io/avatars/50/{{teamName}}" class="user-image"/>
-                            <p>{{teamName}}</p>
+                            <p>{{@index}} - {{teamName}}</p>
                         {{/ionItem}}
                     {{/each}}
                 {{/ionList}}
