@@ -21,5 +21,15 @@ Template.login.events({
 				console.log('You have joined the game!');
 			}
 		});
+	},
+	'click .create-game': function (event) {
+		Meteor.call('createGame', function(error, response) {
+			if(error) {
+				console.log(error.message);
+			} else if(response) {
+				console.log('You have create an new game!');
+				Session.setPersistent('currentGameId', response);
+			}
+		});
 	}
 });
