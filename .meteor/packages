@@ -25,6 +25,5 @@ useraccounts:ionic
 accounts-password
 #useraccounts:iron-routing
 mizzao:user-status
-u2622:persistent-session
 ando:persistent-session
 ejson

@@ -1,5 +1,5 @@
-Meteor.publish("usersForTeam", function() {
-	return Meteor.users.find({});
+Meteor.publish('usersForTeam', function() {
+	return Meteor.users.find({"status.online": true});
 });
 
 // Share all usernames
