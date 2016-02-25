@@ -21,7 +21,8 @@ Template.waitingForUsers.helpers({
 			});
 		});
 
-		if(inGameUsers.length === 4) {
+		// TODO: enable that it works only with four users
+		if(inGameUsers.length === 1) { //4) {
 			$('#start-game').prop("disabled", false);
 		} else {
 			$('#start-game').prop("disabled", true);
@@ -34,7 +35,7 @@ Template.waitingForUsers.helpers({
 Template.waitingForUsers.events({
 	'click #start-game': function(){
 		var currentGameId = Session.get('currentGameId');
-		Meteor.call('setInProgress', currentGameId, function(error, response){
+		Meteor.call('startGame', currentGameId, function(error, response){
 			if(error) {
 				console.log(error.message);
 			} else if(response === 1) {

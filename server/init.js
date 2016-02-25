@@ -3,7 +3,7 @@ Meteor.startup(function () {
   if (Games.find({status:"ready"}).count() === 0) {
     Games.insert(
         {
-          teamName:"Team 1",
+          teamName:"React Lovers",
           status:"ready",
           players:[],
           createdAt: new Date()

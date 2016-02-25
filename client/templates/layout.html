@@ -1,8 +1,12 @@
 <template name="layout">
 
   {{#ionBody}}
-    {{> ionNavBar class="bar-balanced"}}
-    {{#ionNavView}}
+      <div class="bar bar-header bar-balanced">
+          <h1 class="title">    {{> yield "headerTitle"}}</h1>
+          {{> atNavButton}}
+      </div>
+
+      {{#ionNavView}}
       {{> yield}}
     {{/ionNavView}}
 
