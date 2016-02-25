@@ -22,13 +22,19 @@ Template.waitingForUsers.helpers({
 		});
 
 		// TODO: enable that it works only with four users
-		if(inGameUsers.length === 1) { //4) {
+		if(inGameUsers.length > 1){
 			$('#start-game').prop("disabled", false);
 		} else {
 			$('#start-game').prop("disabled", true);
 		}
 
 		return inGameUsers;
+	},
+	gameName: function() {
+		var gameId = Session.get('currentGameId');
+		let game = Games.findOne({'_id': gameId});
+
+		return game.teamName;
 	}
 });
 

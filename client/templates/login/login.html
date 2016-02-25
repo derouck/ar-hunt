@@ -16,12 +16,13 @@
                             {{#each games}}
                                 {{#ionItem}}
                                     <div class="user game">
-                                        <p>{{teamName}}</p>
+                                        <p>{{teamName}}  ({{players.length}})</p>
                                         <button type="button" class="join-game button button-small button-balanced">Join game</button>
                                     </div>
                                 {{/ionItem}}
                             {{/each}}
                         {{/ionList}}
+                        <button type="button" class="create-game button button-small button-balanced">Create game</button>
                     </section>
                 {{else}}
                     {{> atForm}}
