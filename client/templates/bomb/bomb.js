@@ -100,12 +100,15 @@ Template.currentBomb.helpers({
    let currentUsersOfGame = _.intersection(currentUsersIds, game.players)
 
    return (currentUsersOfGame.length >= 2);
+ },
+ userById:function (id){
+   return Meteor.users.findOne(id);
  }
+
 });
 
 Template.currentBomb.events({
   'click #cutWire': function() {
-    alert("CUT");
     let bomb = Beacons.findOne();
     Meteor.call('cutWire', bomb._id, function(err, result){
 
