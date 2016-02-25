@@ -76,7 +76,8 @@ Meteor.methods({
 						// all the bombs are cut, hurray!
 
 						let endDate = new Date();
-						Games.update(game._id, {$set: {status: 'Finished', dateEnd: endDate}});
+						let score = calculateTimeDifference(game.dateStarted, endDate) + game.mistakes * 100;
+						Games.update(game._id, {$set: {status: 'Finished', dateEnd: endDate, score: score}});
 
 						return BOMB_DEFUSED;
 					}
@@ -91,3 +92,9 @@ Meteor.methods({
 		});
 	}
 });
+
+function calculateTimeDifference(startMoment, endMoment)
+{
+	let durationInSeconds = (endMoment-startMoment) / 1000;
+	return durationInSeconds;
+}

@@ -7,7 +7,7 @@ Template.overview.onCreated(function () {
 Template.overview.helpers({
   beacons: () => {
     let game = Games.findOne();
-    let shuffledBeacons =_.shuffle(game.beacons());
-    return shuffledBeacons;
+//    let shuffledBeacons =_.shuffle(game.beacons());
+    return game.beacons();
   }
 });

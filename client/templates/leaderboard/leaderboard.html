@@ -12,12 +12,11 @@
                     {{#each teams}}
                         {{#ionItem avatar=true}}
                             <img src="http://api.adorable.io/avatars/50/{{teamName}}" class="user-image"/>
-                            <p>{{@index}} - {{teamName}}</p>
+                            <p>{{@index}} - {{teamName}} : {{score}}</p>
                         {{/ionItem}}
                     {{/each}}
                 {{/ionList}}
             </section>
         {{/ionContent}}
     {{/ionView}}
-
 </template>
