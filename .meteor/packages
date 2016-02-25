@@ -26,3 +26,4 @@ accounts-password
 #useraccounts:iron-routing
 ando:persistent-session
 ejson
+mbanting:reactive-ibeacons
