@@ -1,22 +1,23 @@
 <template name="beacon">
-<div class="list card beacon-card">
+    <div class="list card beacon-card">
 
-  <div class="item item-avatar">
-      <a href="{{pathFor "currentBomb"}}">
-        <img src="/{{image}}">
-        <h2>{{name}}</h2>
-        <p>{{description}} - {{_id}}</p>
-    </a>
-  </div>
+        <div class="item item-avatar">
+            <img src="/{{image}}">
+            <a href="{{pathFor "currentBomb"}}">
+                <h2>{{name}}</h2>
 
-  <div class="item item-body">
-    {{#each users}}
-      {{_id}}
-      <img src="http://api.adorable.io/avatars/100/{{_id}}.png" class="avatar">
-    {{/each}}
+                <p>{{description}} - {{_id}}</p>
+            </a>
+        </div>
 
-  </div>
+        <div class="item item-body">
+            {{#each users}}
+                {{_id}}
+                <img src="http://api.adorable.io/avatars/100/{{_id}}.png" class="avatar">
+            {{/each}}
 
-</div>
+        </div>
+
+    </div>
 
 </template>
