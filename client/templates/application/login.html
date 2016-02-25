@@ -1,19 +1,27 @@
 <template name="login">
-
     {{#ionView}}
-    {{#ionContent}}
+        {{#ionContent}}
 
-      <div class="login">
+            <div class="login">
 
-      {{#if currentUser}}
-        {{currentUser._id}}
-        <button id="logout">Logout</button>
-	    {{else}}
+                {{#if currentUser}}
+                    {{currentUser._id}}
+                    <button id="logout">Logout</button>
 
-	  		{{> atForm}}
-	    {{/if}}
+                    <section id="games">
+                        <h1>Available Games</h1>
+                        {{#each games}}
+                            <div class="game">
+                                {{teamName}}
+                                <button type="button" class="join-game">Join game</button>
+                            </div>
+                        {{/each}}
+                    </section>
+                {{else}}
+                    {{> atForm}}
+                {{/if}}
 
-      </div>
-    {{/ionContent}}
-  {{/ionView}}
+            </div>
+        {{/ionContent}}
+    {{/ionView}}
 </template>
