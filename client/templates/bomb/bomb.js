@@ -42,7 +42,7 @@ Template.currentBomb.onCreated(function(){
                   //console.log("beacon in region "+bomb.minor+" "+bomb.major);
 
 
-                  if(element.proximity == 'ProximityUnknown' || element.proximity == 'ProximityFar' || element.proximity == 'ProximityImmediate' || element.proximity == 'ProximityNear'){
+                  if(element.proximity == 'ProximityFar' || element.proximity == 'ProximityImmediate' || element.proximity == 'ProximityNear'){
                     Meteor.call('updateNearestBeacon', bomb._id);
                   }
                   else {
