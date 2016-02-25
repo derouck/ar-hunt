@@ -56,8 +56,9 @@ Template.currentBomb.helpers({
   }
 });
 
-Template.newMeal.events({
+Template.currentBomb.events({
   'click #cutWire': function() {
+    alert("CUT");
     bomb = Beacons.findOne();
     Meteor.call('cutWire', bomb._id, function(err, result){
 
