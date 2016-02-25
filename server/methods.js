@@ -69,7 +69,9 @@ Meteor.methods({
 		game.ordering.forEach(function(beaconId, index){
 			if(beaconId == currentBeaconId){
 				// index of bomb will start at 0, so first bomb will be zero and at that moment wirestCut=0 as well
-				if(index == game.wiresCut){
+				console.log(index);
+				console.log(game.wiresCut);
+				//if(index == game.wiresCut){
 					Games.update(game._id, {$inc: {wiresCut: 1}});
 
 					if(amountOfBombs == game.wiresCut + 1){
@@ -83,11 +85,11 @@ Meteor.methods({
 					}
 
 					return BOMB_PARTIALLY_DEFUSED;
-				}else{
-					Games.update(game._id, {$inc: {mistakesMade: 1}});
-
-					return BOMB_EXPLODED;
-				}
+				//}else{
+				//	Games.update(game._id, {$inc: {mistakesMade: 1}});
+                //
+				//	return BOMB_EXPLODED;
+				//}
 			}
 		});
 	}

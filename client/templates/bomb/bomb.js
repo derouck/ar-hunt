@@ -111,8 +111,23 @@ Template.currentBomb.events({
   'click #cutWire': function() {
     let bomb = Beacons.findOne();
     Meteor.call('cutWire', bomb._id, function(err, result){
-
-      console.log(result);
+        if(result){
+            if(result == BOMB_PARTIALLY_DEFUSED){
+                alert("Bomb defused, up to the next!");
+            }else{
+                if(result == BOMB_EXPLODED){
+                    alert("Kaboom, try another first!");
+                }else{
+                    if(result == BOMB_DEFUSED){
+                        alert("Allright! You've defused the bomb");
+                        Router.go("/winner");
+                    }
+                }
+            }
+        }else{
+            console.log(err);
+            alert(err.message);
+        }
     });
   }
 });
