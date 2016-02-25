@@ -63,4 +63,5 @@ Template.newMeal.events({
 
       console.log(result);
     })
+  }
 });
