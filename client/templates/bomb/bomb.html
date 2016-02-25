@@ -1,14 +1,44 @@
 <template name="currentBomb">
     {{#contentFor "headerTitle"}}
-        <h1 class="title">TEAM</h1>
+        <h1 class="title">BOMB</h1>
     {{/contentFor}}
 
+    {{#contentFor "headerButtonLeft"}}
+      {{>ionNavBackButton class="button-positive" text=false}}
+    {{/contentFor}}
 
     {{#ionView}}
         {{#ionContent}}
-            {{#with currentBomb}}
-                <h1>Bomb {{_id}} {{name}} {{uuid}}</h1>
-            {{/with}}
+        {{#with currentBomb}}
+          <div class="list card">
+
+
+            <div class="item item-avatar">
+              <img class="" src="/{{image}}">
+              <h2>{{name}}</h2>
+            </div>
+
+            <div class="item">
+              <center>
+              <i class="fa fa-certificate fa-5x fa-spin"></i>
+              <div style="margin-top:20px;">
+
+                {{#if proximity0}}<i class="fa fa-3x fa-circle-o"></i><i class="fa fa-3x fa-circle-o"></i><i class="fa fa-3x fa-circle-o"></i>{{/if}}
+                {{#if proximity1}}<i class="fa fa-3x fa-circle"></i><i class="fa fa-3x fa-circle-o"></i><i class="fa fa-3x fa-circle-o"></i>{{/if}}
+                {{#if proximity2}}<i class="fa fa-3x fa-circle"></i><i class="fa fa-3x fa-circle"></i><i class="fa fa-3x fa-circle-o"></i>{{/if}}
+                {{#if proximity3}}<i class="fa fa-3x fa-circle"></i><i class="fa fa-3x fa-circle"></i><i class="fa fa-3x fa-circle"></i>{{/if}}
+
+              </div>
+            </center>
+            </div>
+
+            <div class="item item-body">
+                <p>{{description}}</p>
+                <a href="#" id="cutWire" class="button button-balanced button-block">CUT THE WIRE</a>
+            </div>
+
+          </div>
+          {{/with}}
         {{/ionContent}}
     {{/ionView}}
 </template>

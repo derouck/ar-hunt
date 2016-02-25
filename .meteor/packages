@@ -31,3 +31,5 @@ zimme:active-route
 dburles:collection-helpers # ability to attach helpers to a collection (makes it possible to have behaviors on a collections data)
 mbanting:reactive-ibeacons
 underscore
+reactive-var
+fortawesome:fontawesome
