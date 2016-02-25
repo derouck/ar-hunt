@@ -7,11 +7,12 @@
     {{#ionView}}
         {{#ionContent}}
             <section id="users">
+                <h1>{{gameName}}</h1>
                 {{#ionList}}
                     {{#each inGameUsers}}
                         {{#ionItem avatar=true}}
                             <img src="http://api.adorable.io/avatars/50/{{_id}}" class="user-image"/>
-                            <p>{{emails.[0].address}}</p>
+                            <p>{{username}}</p>
                         {{/ionItem}}
                     {{/each}}
                 {{/ionList}}

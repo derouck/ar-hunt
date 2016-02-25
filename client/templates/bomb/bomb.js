@@ -106,7 +106,7 @@ Template.currentBomb.helpers({
 Template.currentBomb.events({
   'click #cutWire': function() {
     alert("CUT");
-    bomb = Beacons.findOne();
+    let bomb = Beacons.findOne();
     Meteor.call('cutWire', bomb._id, function(err, result){
 
       console.log(result);

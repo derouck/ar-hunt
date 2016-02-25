@@ -1,7 +1,7 @@
 var teamNames = [
-	"Red Patotoes",
-	"Yellow Sea",
-	"Orange Panters",
+	"Red Papas",
+	"Yellow Flowers",
+	"Orange Panthers",
 	"Blue Ocean",
 	"Soppa de papa",
 	"Surf Turf",
@@ -14,6 +14,30 @@ Meteor.methods({
 	},
 	joinGame: function(id) {
 		return Games.update(id, {$push: {players: this.userId}});
+	},
+	createGame: function() {
+		if(! this.userId){
+			throw new Meteor.error(403, "Not authorized to create games");
+		}
+
+		let shuffledTeamNames =_.shuffle(teamNames);
+		let teamName = shuffledTeamNames[0];
+		let currentTeamNameCount = Games.find({teamName: teamName}).count();
+
+		if(currentTeamNameCount > 0){
+			teamName += " " + currentTeamNameCount++;
+		}
+
+		let gameId = Games.insert(
+			{
+				teamName: teamName,
+				status: "ready",
+				players: [this.userId],
+				createdAt: new Date()
+			}
+		);
+
+		return gameId;
 	},
 	startGame: function(id) {
 		let beacons = Beacons.find().fetch();
