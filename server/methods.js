@@ -47,10 +47,10 @@ Meteor.methods({
 						// all the bombs are cut, hurray!
 						Games.update(game._id, {$set: {status: 'Finished', dateEnd: new Date()}});
 
-						return 200;
+						return BOMB_DEFUSED;
 					}
 
-					return 250;
+					return BOMB_PARTIALLY_DEFUSED;
 					// Allright you've cut the wire
 				}else{
 					Games.update(game._id, {$set: {status: 'Exploded', dateEnd: new Date()}});
@@ -65,7 +65,7 @@ Meteor.methods({
 						}
 					);
 
-					return 500;
+					return BOMB_EXPLODED;
 				}
 			}
 		});
