@@ -28,6 +28,7 @@ Meteor.methods({
 		return Games.update(id, {$set: {status: 'inProgress', ordering: beacon_ordering, wiresCut: 0, dateStarted: new Date()}});
 	},
 	cutWire: function(currentBeaconId) {
+		console.log(currentBeaconId);
 		let game = Games.find({status: "inProgress", players: this.userId});
 		console.log(game);
 
