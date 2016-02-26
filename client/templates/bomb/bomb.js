@@ -67,8 +67,12 @@ Template.currentBomb.helpers({
     //return Session.get('subBeaconList');
   },
   proximity3: function(){
-   return (Template.instance().beaconsFound.get() =='ProximityImmediate');
-   //return Session.get('subBeaconList');
+      if(! Meteor.isCordova){
+          return true;
+      }else{
+          return (Template.instance().beaconsFound.get() =='ProximityImmediate');
+          //return Session.get('subBeaconList');
+      }
   },
   proximity2: function(){
    return (Template.instance().beaconsFound.get() =='ProximityNear');
@@ -93,13 +97,19 @@ Template.currentBomb.helpers({
    return currentUsersOfGame;
  },
  canCut: function(){
-   let game = Games.findOne();
-   let bomb = Beacons.findOne();
-   let currentUsers = Meteor.users.find({nearestBeacon:bomb._id}).fetch();
-   let currentUsersIds = _.map(currentUsers, function(value, key){ return value._id});
-   let currentUsersOfGame = _.intersection(currentUsersIds, game.players)
+     if(! Meteor.isCordova){
+         return true;
+     }else {
+         let game = Games.findOne();
+         let bomb = Beacons.findOne();
+         let currentUsers = Meteor.users.find({nearestBeacon: bomb._id}).fetch();
+         let currentUsersIds = _.map(currentUsers, function (value, key) {
+             return value._id
+         });
+         let currentUsersOfGame = _.intersection(currentUsersIds, game.players)
 
-   return (currentUsersOfGame.length >= 2);
+         return (currentUsersOfGame.length >= 2);
+     }
  },
  userById:function (id){
    return Meteor.users.findOne(id);
@@ -107,16 +117,24 @@ Template.currentBomb.helpers({
     isDisarmed: function(){
         let game = Games.findOne();
         let bomb = Beacons.findOne();
+
+        console.log("isdisarmed?")
         if(! game.defusedBombs){
+            console.log("defused bombs not set");
             game.defusedBombs = [];
         }
 
+        let isDisarmed = false;
         game.defusedBombs.forEach(function(disarmedBomb){
+            console.log("DisarmedBomb" + disarmedBomb);
+            console.log("Currentbomb" + bomb._id);
             if (disarmedBomb == bomb._id){
+                console.log("disarmed !!!!!");
+                isDisarmed = true;
                 return true;
             }
         });
-        return false;
+        return isDisarmed;
     }
 
 });
@@ -125,6 +143,8 @@ Template.currentBomb.events({
   'click #cutWire': function() {
     let bomb = Beacons.findOne();
     Meteor.call('cutWire', bomb._id, function(err, result){
+        console.log("RESULT: " + result);
+
         if(err) {
             console.log(err);
             alert(err.message);
@@ -134,16 +154,14 @@ Template.currentBomb.events({
             alert("Bomb defused, up to the next!");
         }
 
-        //if(result == BOMB_EXPLODED){
-        //    alert("Kaboom, try another first!");
-        //}
+        if(result == BOMB_EXPLODED){
+            alert("Kaboom, try another first!");
+        }
 
         if(result == BOMB_DEFUSED){
             alert("Allright! You've defused the bomb");
             Router.go("/winner");
         }
-
-
     });
   }
 });

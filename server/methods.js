@@ -67,33 +67,41 @@ Meteor.methods({
 
 		let amountOfBombs = game.ordering.length;
 
+		let result;
 		game.ordering.forEach(function(beaconId, index){
 			if(beaconId == currentBeaconId){
+				console.log("Index of the bomb: " + index);
+				console.log("Wires cut: " + game.wiresCut);
+				console.log("AMount of bombs: " + amountOfBombs);
+
 				// index of bomb will start at 0, so first bomb will be zero and at that moment wirestCut=0 as well
-				console.log(index);
-				console.log(game.wiresCut);
-				//if(index == game.wiresCut){
+				if(index == game.wiresCut){
 					Games.update(game._id, {$inc: {wiresCut: 1}});
 					Games.update(game._id, {$addToSet: {defusedBombs: beaconId}});
 
-					if(amountOfBombs == game.wiresCut){
+					if(amountOfBombs == game.wiresCut + 1){
 						// all the bombs are cut, hurray!
 
 						let endDate = new Date();
 						let score = calculateTimeDifference(game.dateStarted, endDate) + game.mistakes * 100;
 						Games.update(game._id, {$set: {status: 'Finished', dateEnd: endDate, score: score}});
 
-						return BOMB_DEFUSED;
+						result = BOMB_DEFUSED;
+						return true;
 					}
 
-					return BOMB_PARTIALLY_DEFUSED;
-				//}else{
-				//	Games.update(game._id, {$inc: {mistakesMade: 1}});
-                //
-				//	return BOMB_EXPLODED;
-				//}
+					result = BOMB_PARTIALLY_DEFUSED;
+					return true;
+				}else{
+					Games.update(game._id, {$inc: {mistakesMade: 1}});
+
+					result = BOMB_EXPLODED;
+					return true;
+				}
 			}
 		});
+
+		return result;
 	}
 });
 
