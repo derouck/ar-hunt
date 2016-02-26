@@ -152,14 +152,16 @@ Template.currentBomb.events({
 
         if(result == BOMB_PARTIALLY_DEFUSED){
             alert("Bomb defused, up to the next!");
+            Router.go('/overview');
         }
 
         if(result == BOMB_EXPLODED){
             alert("Kaboom, try another first!");
+            Router.go('/overview');
         }
 
         if(result == BOMB_DEFUSED){
-            alert("Allright! You've defused the bomb");
+            alert("Congratulations! You've defused the bomb");
             Router.go("/winner");
         }
     });

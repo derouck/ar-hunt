@@ -75,7 +75,7 @@ Meteor.methods({
 				console.log("AMount of bombs: " + amountOfBombs);
 
 				// index of bomb will start at 0, so first bomb will be zero and at that moment wirestCut=0 as well
-				if(index == game.wiresCut){
+				//if(index == game.wiresCut){
 					Games.update(game._id, {$inc: {wiresCut: 1}});
 					Games.update(game._id, {$addToSet: {defusedBombs: beaconId}});
 
@@ -83,7 +83,12 @@ Meteor.methods({
 						// all the bombs are cut, hurray!
 
 						let endDate = new Date();
-						let score = calculateTimeDifference(game.dateStarted, endDate) + game.mistakes * 100;
+						let score = calculateTimeDifference(game.dateStarted, endDate);
+
+						if(game.mistakes && game.mistakes > 0) {
+							score = score + (game.mistakes * 100);
+							console.log(score);
+						}
 						Games.update(game._id, {$set: {status: 'Finished', dateEnd: endDate, score: score}});
 
 						result = BOMB_DEFUSED;
@@ -92,12 +97,12 @@ Meteor.methods({
 
 					result = BOMB_PARTIALLY_DEFUSED;
 					return true;
-				}else{
-					Games.update(game._id, {$inc: {mistakesMade: 1}});
-
-					result = BOMB_EXPLODED;
-					return true;
-				}
+				//}else{
+				//	Games.update(game._id, {$inc: {mistakesMade: 1}});
+                //
+				//	result = BOMB_EXPLODED;
+				//	return true;
+				//}
 			}
 		});
 
