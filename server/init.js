@@ -53,7 +53,8 @@ Meteor.startup(function () {
           status:"ready",
           players:[],
           ordering: beacon_ordering,
-          dateStarted: new Date()
+          dateStarted: new Date(),
+          defusedBombs: []
         });
 
       Games.insert({
@@ -64,7 +65,8 @@ Meteor.startup(function () {
           dateStarted: new Date(),
           dateEnd: new Date(),
           mistakes: 1,
-          wiresCut: 4
+          wiresCut: 4,
+          score: 9999999
       });
   }
 

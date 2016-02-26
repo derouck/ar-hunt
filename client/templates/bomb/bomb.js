@@ -103,7 +103,21 @@ Template.currentBomb.helpers({
  },
  userById:function (id){
    return Meteor.users.findOne(id);
- }
+ },
+    isDisarmed: function(){
+        let game = Games.findOne();
+        let bomb = Beacons.findOne();
+        if(! game.defusedBombs){
+            game.defusedBombs = [];
+        }
+
+        game.defusedBombs.forEach(function(disarmedBomb){
+            if (disarmedBomb == bomb._id){
+                return true;
+            }
+        });
+        return false;
+    }
 
 });
 
@@ -111,23 +125,25 @@ Template.currentBomb.events({
   'click #cutWire': function() {
     let bomb = Beacons.findOne();
     Meteor.call('cutWire', bomb._id, function(err, result){
-        if(result){
-            if(result == BOMB_PARTIALLY_DEFUSED){
-                alert("Bomb defused, up to the next!");
-            }else{
-                if(result == BOMB_EXPLODED){
-                    alert("Kaboom, try another first!");
-                }else{
-                    if(result == BOMB_DEFUSED){
-                        alert("Allright! You've defused the bomb");
-                        Router.go("/winner");
-                    }
-                }
-            }
-        }else{
+        if(err) {
             console.log(err);
             alert(err.message);
         }
+
+        if(result == BOMB_PARTIALLY_DEFUSED){
+            alert("Bomb defused, up to the next!");
+        }
+
+        //if(result == BOMB_EXPLODED){
+        //    alert("Kaboom, try another first!");
+        //}
+
+        if(result == BOMB_DEFUSED){
+            alert("Allright! You've defused the bomb");
+            Router.go("/winner");
+        }
+
+
     });
   }
 });

@@ -33,7 +33,8 @@ Meteor.methods({
 				teamName: teamName,
 				status: "ready",
 				players: [this.userId],
-				dateStarted: new Date()
+				dateStarted: new Date(),
+				defusedBombs: []
 			}
 		);
 
@@ -73,8 +74,9 @@ Meteor.methods({
 				console.log(game.wiresCut);
 				//if(index == game.wiresCut){
 					Games.update(game._id, {$inc: {wiresCut: 1}});
+					Games.update(game._id, {$addToSet: {defusedBombs: beaconId}});
 
-					if(amountOfBombs == game.wiresCut + 1){
+					if(amountOfBombs == game.wiresCut){
 						// all the bombs are cut, hurray!
 
 						let endDate = new Date();
